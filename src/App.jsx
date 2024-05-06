@@ -18,6 +18,9 @@ function App() {
     else{
       setLast(value)
     }
+    if(first===''||last===''){
+      setSubmit(false);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -59,7 +62,7 @@ function App() {
         <button onClick={handleSubmit} type="submit">Submit</button>
         <br/>
         <br/>
-        {submit ? (
+        {first&&last&&submit ? (
           <div>
             Full Name: {initial.first} {initial.last}
           </div>
