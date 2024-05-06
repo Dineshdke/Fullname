@@ -4,12 +4,20 @@ import { useState } from "react";
 function App() {
 
   const [submit, setSubmit] = useState(false);
+  const [first,setFirst] = useState('');
+  const [last,setLast] = useState('');
   const [initial, setInitial] = useState({'first':'','last':''});
   const [formError, setFormError] = useState({});
 
   const handleChange = (e) => {
     const {name,value} = e.target;
     setInitial({...initial, [name]: value});
+    if(name=='first'){
+      setFirst(value)
+    }
+    else{
+      setLast(value)
+    }
   };
 
   const handleSubmit = (e) => {
@@ -36,13 +44,13 @@ function App() {
       <h1>Full Name Display</h1>
       <form >
         <label>
-          First Name:<input type='text' name='first' onChange={handleChange} required/>
+          First Name:<input type='text' name='first' value={first} onChange={handleChange} required/>
         </label>
         <div>
           {formError.first} 
         </div>       
         <div>
-          Last Name:<input type='text' name='last' onChange={handleChange} required/>
+          Last Name:<input type='text' name='last' value={last} onChange={handleChange} required/>
         </div>
         <div>
           {formError.last}
