@@ -48,7 +48,7 @@ function App() {
           {formError.last}
         </div>     
         <br/>
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit} type="submit">Submit</button>
         <br/>
         <br/>
         {submit ? (
