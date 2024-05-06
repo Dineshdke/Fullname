@@ -6,12 +6,12 @@ function App() {
   const [submit, setSubmit] = useState(false);
   const [first,setFirst] = useState('');
   const [last,setLast] = useState('');
-  const [initial, setInitial] = useState({'first':'','last':''});
+  // const [initial, setInitial] = useState({'first':'','last':''});
   const [formError, setFormError] = useState({});
 
   const handleChange = (e) => {
     const {name,value} = e.target;
-    setInitial({...initial, [name]: value});
+    // setInitial({...initial, [name]: value});
     if(name=='first'){
       setFirst(value)
     }
@@ -25,18 +25,19 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormError(validate(initial));
-    if(initial.first && initial.last){
-      setSubmit(true)
+    setFormError(validate({first,last}));
+    if(first&&last){
+      setSubmit(true);
+      // console.log(document.getElementById("my-form").elements);
     }
   }
 
-  const validate = (initial)=>{
+  const validate = ({first,last})=>{
     const error={};
-    if(!initial.first){
+    if(!first){
       error.first = 'Please input the First name';
     }    
-    if(!initial.last){
+    if(!last){
       error.last = 'Please input the Last name';
     }
     return error;
@@ -45,7 +46,7 @@ function App() {
   return (
     <>
       <h1>Full Name Display</h1>
-      <form >
+      <form id="my-form">
         <label>
           First Name:<input type='text' name='first' value={first} onChange={handleChange} required/>
         </label>
@@ -64,7 +65,7 @@ function App() {
         <br/>
         {first&&last&&submit ? (
           <div>
-            Full Name: {initial.first} {initial.last}
+            Full Name: {first} {last}
           </div>
         ) : (
           ""
