@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <h1>Full Name Display</h1>
-      <form id="my-form">
+      <form onSubmit={handleSubmit}>
         <label>
           First Name:<input type='text' name='first' value={first} onChange={handleChange} required/>
         </label>
@@ -60,7 +60,7 @@ function App() {
           {formError.last}
         </div>     
         <br/>
-        <button onClick={handleSubmit} type="submit">Submit</button>
+        <button type="submit">Submit</button>
         <br/>
         <br/>
         {first&&last&&submit ? (
