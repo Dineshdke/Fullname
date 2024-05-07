@@ -6,8 +6,7 @@ function App() {
   const [submit, setSubmit] = useState(false);
   const [first,setFirst] = useState('');
   const [last,setLast] = useState('');
-  // const [initial, setInitial] = useState({'first':'','last':''});
-  const [formError, setFormError] = useState({});
+  // const [formError, setFormError] = useState({});
 
   const handleChange = (e) => {
     const {name,value} = e.target;
@@ -25,23 +24,22 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormError(validate({first,last}));
+    // setFormError(validate({first,last}));
     if(first&&last){
       setSubmit(true);
-      // console.log(document.getElementById("my-form").elements);
     }
   }
 
-  const validate = ({first,last})=>{
-    const error={};
-    if(!first){
-      error.first = 'Please input the First name';
-    }    
-    if(!last){
-      error.last = 'Please input the Last name';
-    }
-    return error;
-  }
+  // const validate = ({first,last})=>{
+  //   const error={};
+  //   if(!first){
+  //     error.first = 'Please input the First name';
+  //   }    
+  //   if(!last){
+  //     error.last = 'Please input the Last name';
+  //   }
+  //   return error;
+  // }
 
   return (
     <>
@@ -50,20 +48,20 @@ function App() {
         <label>
           First Name:<input type='text' name='first' value={first} onChange={handleChange} required/>
         </label>
-        <div>
+        {/* <div>
           {formError.first} 
-        </div>       
+        </div>        */}
         <div>
           Last Name:<input type='text' name='last' value={last} onChange={handleChange} required/>
         </div>
-        <div>
+        {/* <div>
           {formError.last}
-        </div>     
+        </div>      */}
         <br/>
         <button type="submit">Submit</button>
         <br/>
         <br/>
-        {first&&last&&submit ? (
+        {submit ? (
           <div>
             Full Name: {first} {last}
           </div>
